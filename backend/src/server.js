@@ -3,9 +3,13 @@ const prisma = require('./config/prisma');
 const buildApp = require('./app');
 const logger = require('./utils/logger');
 
+logger.info(`Starting backend (NODE_ENV=${env.NODE_ENV}, PORT=${env.PORT})`);
+logger.info(`Frontend origin: ${env.FRONTEND_ORIGIN}`);
+logger.info(`Database host: ${(() => { try { return new URL(env.DATABASE_URL).host; } catch { return 'invalid'; } })()}`);
+
 const app = buildApp();
 
-const server = app.listen(env.PORT, () => {
+const server = app.listen(env.PORT, '0.0.0.0', () => {
   logger.ready(`backend on :${env.PORT}`);
 });
 
