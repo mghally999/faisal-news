@@ -1,9 +1,6 @@
-const path = require('path');
-
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  outputFileTracingRoot: path.join(__dirname, '..'),
   images: {
     remotePatterns: [{ protocol: 'https', hostname: '**' }]
   },
