@@ -1,4 +1,13 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+const sanitizeUrl = (raw, fallback) => {
+  const trimmed = (raw || '').trim().replace(/^[:\s,;]+/, '').replace(/\/+$/, '');
+  try {
+    return new URL(trimmed).toString().replace(/\/$/, '');
+  } catch {
+    return fallback;
+  }
+};
+
+const API_URL = sanitizeUrl(process.env.NEXT_PUBLIC_API_URL, 'http://localhost:4000');
 
 let accessToken = null;
 let refreshInFlight = null;

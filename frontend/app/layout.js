@@ -16,7 +16,16 @@ const playfair = Playfair_Display({
   variable: '--font-display'
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+const sanitizeUrl = (raw, fallback) => {
+  const trimmed = (raw || '').trim().replace(/^[:\s,;]+/, '').replace(/\/+$/, '');
+  try {
+    return new URL(trimmed).toString().replace(/\/$/, '');
+  } catch {
+    return fallback;
+  }
+};
+
+const SITE_URL = sanitizeUrl(process.env.NEXT_PUBLIC_SITE_URL, 'http://localhost:3000');
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
