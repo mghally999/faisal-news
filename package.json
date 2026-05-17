@@ -1,0 +1,17 @@
+{
+  "name": "news-app-fullstack",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Fullstack news application — Next.js 15 + Express + Prisma + Postgres",
+  "scripts": {
+    "setup": "bash bootstrap.sh",
+    "dev": "concurrently -n be,fe -c yellow,cyan \"npm run dev:be\" \"npm run dev:fe\"",
+    "dev:be": "npm --prefix backend run dev",
+    "dev:fe": "npm --prefix frontend run dev",
+    "build": "npm --prefix backend run build && npm --prefix frontend run build",
+    "start": "concurrently -n be,fe -c yellow,cyan \"npm --prefix backend start\" \"npm --prefix frontend start\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

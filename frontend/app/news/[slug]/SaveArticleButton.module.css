@@ -1,0 +1,22 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--bg);
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: 0;
+  transition: transform 200ms var(--ease), box-shadow 200ms var(--ease), opacity 200ms var(--ease);
+}
+
+.btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: var(--shadow-gold); }
+.btn:disabled { opacity: 0.85; cursor: default; }
+
+.saved {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--border-strong);
+}
